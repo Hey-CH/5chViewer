@@ -1,0 +1,57 @@
+﻿<Window x:Class="_5chViewerWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_5chViewerWPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="600" ResizeMode="CanResizeWithGrip">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TreeView Grid.Column="0" ItemsSource="{Binding Menus}" SelectedItemChanged="TreeView_SelectedItemChanged">
+                <TreeView.Resources>
+                    <Style TargetType="TreeViewItem">
+                        <Setter Property="IsExpanded" Value="{Binding IsExpanded}"/>
+                    </Style>
+                </TreeView.Resources>
+                <TreeView.ItemTemplate>
+                    <HierarchicalDataTemplate DataType="{x:Type local:TreeSource}" ItemsSource="{Binding Children}">
+                        <StackPanel>
+                            <TextBlock Text="{Binding Text}"/>
+                        </StackPanel>
+                    </HierarchicalDataTemplate>
+                </TreeView.ItemTemplate>
+            </TreeView>
+            <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch"/>
+            <ListBox Grid.Column="2" ItemsSource="{Binding Threads}" SelectionChanged="ListBox_SelectionChanged" >
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Text}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+        <GridSplitter Grid.Row="1" Height="5" HorizontalAlignment="Stretch"/>
+        <RichTextBox Grid.Row="2" x:Name="richTextBox1">
+            <RichTextBox.Resources>
+                <Style TargetType="Hyperlink">
+                    <Setter Property="TextDecorations" Value="Underline"/>
+                    <Setter Property="Foreground" Value="Blue"/>
+                    <Setter Property="Cursor" Value="Hand"/>
+                </Style>
+            </RichTextBox.Resources>
+        </RichTextBox>
+    </Grid>
+</Window>

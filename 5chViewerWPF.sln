@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "5chViewerWPF", "5chViewerWPF\5chViewerWPF.csproj", "{D6A348F0-A15D-4893-B0AA-A0B3344223CC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D6A348F0-A15D-4893-B0AA-A0B3344223CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6A348F0-A15D-4893-B0AA-A0B3344223CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6A348F0-A15D-4893-B0AA-A0B3344223CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6A348F0-A15D-4893-B0AA-A0B3344223CC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {848BAF20-E8C4-4140-90BC-5F8F432D1F73}
+	EndGlobalSection
+EndGlobal
