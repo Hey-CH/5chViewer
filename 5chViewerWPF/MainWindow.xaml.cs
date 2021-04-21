@@ -45,7 +45,7 @@ namespace _5chViewerWPF {
             string currentTag = null;
             string currentAttr = null;
             string tmp = null;
-            Regex regex = new Regex("(?:href=\")(.*)(?:\")");
+            Regex regex = new Regex("(?:href=)(.*)",RegexOptions.IgnoreCase);
             for (int i = 0; i < html.Length; i++) {
                 if (html[i] == '<') {
                     if (html[i + 1] == '/') {
@@ -53,8 +53,8 @@ namespace _5chViewerWPF {
                             if (currentTag == "B") {
                                 TreeSource tn = new TreeSource(tmp);
                                 vm.Menus.Add(tn);
-                            } else if (currentTag == "a" && vm.Menus.Count > 0) {
-                                string href = "https:" + regex.Match(currentAttr).Groups[1].Value + "subback.html";
+                            } else if (currentTag == "A" && vm.Menus.Count > 0) {
+                                string href = regex.Match(currentAttr).Groups[1].Value + "subback.html";
                                 TreeSource tn = new TreeSource(tmp);
                                 tn.URL = href;
                                 vm.Menus[vm.Menus.Count - 1].Children.Add(tn);
@@ -77,7 +77,7 @@ namespace _5chViewerWPF {
                 } else {
                     if (isAttr) currentAttr += html[i];
                     else if (stTag) currentTag += html[i];
-                    else if (!edTag && (currentTag == "B" || currentTag == "a")) {
+                    else if (!edTag && (currentTag == "B" || currentTag == "A")) {
                         tmp += html[i];
                         if (tmp == "他のサイト") break;
                     }
